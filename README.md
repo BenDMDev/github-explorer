@@ -1,11 +1,6 @@
-TO DO
+# Tabby Cat GitHub Explorer
+This software is an implementation of the Tabby GitHub Explorer project. This is a case study for the forthcoming Springer book "Agile Software Engineering Skills."
 
-Diagrams - 
-    MVC Front End
-    Client Server (overall) + Facade Patterns
-    Clean Architecture (Server)
-    Observer patterns
-   
 
 # Running Locally (No Docker)
 
@@ -18,10 +13,15 @@ Diagrams -
 
 `git clone https://github.com/BenDMDev/github-explorer.git` 
 
+For this fork use
+
+`git clone https://github.com/julianbass/github-explorer.git` 
 
 ### Setting Up the API Server
 
 Once you have cloned the repository change into the server directory and use the following command:
+
+`chmod +x mvnw`
 
 `./mvnw spring-boot:run`
 
@@ -29,13 +29,13 @@ The API can be accessed via http://127.0.0.1:8080
 
 ### Setting up the Client "Dev" Server
 
-From the root directory of the repository, change into the "client-html" directory. You'll need to install dependencies first using the following command:
+From the root directory of the repository, change into the "client" directory. You'll need to install dependencies first using the following command:
 
 `npm install`
 
-Once dependencies have been install you can run a local development server which servers the HTML/JS files and acts as a reverse proxy (to avoid CORS issues)
+Once dependencies have been install you can run a local development server which serves the HTML/JS files and acts as a reverse proxy (to avoid CORS issues). This is a convenience script that allows real time development of the client without the need to rebuild/deploy. 
 
-`node server.js`
+`node local-dev-server.js`
 
 The client can be accessed via http://127.0.0.1:4000
 
@@ -53,7 +53,7 @@ If you don't wish to install dependencies locally you can install Docker (howeve
 
 From the root directory of the repository change into the server directory and build the docker image using the following command:
 
-`docker build . -t git-explorer-api`
+`sudo docker build . -t git-explorer-api`
 
 
 ### A Note on GitHub Rate limiting
@@ -73,7 +73,7 @@ Once you have created a personal access token you can inject this via the enviro
 
 For convenience there is a docker-compose file which allows the front end and server side to be built and ran in a single line command:
 
-`docker-compose up -d`
+`sudo docker-compose up -d`
 
 (this needs to be run in the root directory, at the same level as the docker-compose.yml file).
 
